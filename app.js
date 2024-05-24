@@ -8,7 +8,7 @@ var menuLinks = [
 const mainEl = document.querySelector("main");
 const newHeader = document.createElement("h1");
 newHeader.innerText = "DOM Manipulation";
-newHeader.className = "flex-ctr";
+mainEl.className = "flex-ctr";
 mainEl.append(newHeader);
 
 const topMenuEl = document.getElementById("top-menu");
@@ -16,15 +16,23 @@ topMenuEl.className = "flex-around";
 
 // console.log(mainEl)
 
-function addFunctionality(arr) {
+function addMenuButtons(arr) {
     arr.flatMap(obj => {
-        let functionality = document.createElement("a")
-        // console.log(functionality)
-        functionality.href = obj.href
-        functionality.textContent = obj.text
-        topMenuEl.append(functionality)
-        // console.log(functionality)
+        let buttons = document.createElement("a")
+        // console.log buttons)
+     buttons.href = obj.href
+     buttons.textContent = obj.text
+        topMenuEl.append(buttons)
+        // console.log buttons)
     });
 
 }
-addFunctionality(menuLinks)
+addMenuButtons(menuLinks)
+
+//part 3: creating sub menu
+
+const subMenuEl = document.getElementById("sub-menu");
+// console.log(subMenuEl.style)
+subMenuEl.style.height = "100%";
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)'
+subMenuEl.classList = "flex-around"
