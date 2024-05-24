@@ -19,11 +19,13 @@ topMenuEl.className = "flex-around";
 function addFunctionality(arr) {
     arr.flatMap(obj => {
         let functionality = document.createElement("a")
+        // console.log(functionality)
         functionality.href = obj.href
         functionality.textContent = obj.text
         topMenuEl.append(functionality)
+        // console.log(functionality)
     });
 
 }
 
-console.log(addFunctionality(menuLinks))
+// console.log(addFunctionality(menuLinks))
