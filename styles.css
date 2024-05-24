@@ -8,6 +8,10 @@
     --top-menu-bg: #0e9aa7;
     --sub-menu-bg: #3da4ab;
   }
+
+  main{
+    background-color: var(--main-bg);
+  }
   
   body {
     font-family: Tahoma, Geneva, sans-serif;
@@ -38,6 +42,10 @@
     color: white;
   }
   
+  #top-menu {
+    height: 100%;
+    background-color: var(--top-menu-bg);
+  }
   #top-menu a:hover {
     background-color: var(--sub-menu-bg);
   }
