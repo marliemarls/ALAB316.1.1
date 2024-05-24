@@ -27,5 +27,4 @@ function addFunctionality(arr) {
     });
 
 }
-
-// console.log(addFunctionality(menuLinks))
+addFunctionality(menuLinks)
