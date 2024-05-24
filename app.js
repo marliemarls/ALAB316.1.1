@@ -19,7 +19,7 @@ topMenuEl.className = "flex-around";
 function addMenuButtons(arr) {
     arr.flatMap(obj => {
         let buttons = document.createElement("a")
-        // console.log buttons)
+    // console.log(buttons)
      buttons.href = obj.href
      buttons.textContent = obj.text
         topMenuEl.append(buttons)
@@ -34,5 +34,8 @@ addMenuButtons(menuLinks)
 const subMenuEl = document.getElementById("sub-menu");
 // console.log(subMenuEl.style)
 subMenuEl.style.height = "100%";
-subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)'
-subMenuEl.classList = "flex-around"
+subMenuEl.style.backgroundColor = 'var(--sub-menu-bg)';
+subMenuEl.classList = "flex-around";
+subMenuEl.style.position = "absolute";
+subMenuEl.style.top = "0"
+
