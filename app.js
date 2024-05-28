@@ -69,13 +69,12 @@ subMenuEl.style.top = "0";
 // console.log(subMenuEl)
 
 //part 4: adding menu interaction (dom manipulation part 2)
-let topMenuLinks = document.querySelectorAll("a")
-// console.log(topMenuLinks)
-topMenuEl.addEventListener("click", function(event){
-    event.preventDefault()
-    console.log(event.target)
-    if(event.target) {
+let topMenuLinks = topMenuEl.querySelectorAll("a");
+console.log(topMenuLinks);
+topMenuEl.addEventListener("click", function (event) {
+  event.preventDefault();
+  if(event.target.localName !== "a") return;
+  else console.log( event.target.innerText)
+});
 
-    }
-})
-console.log(topMenuLinks)
+console.log(topMenuLinks);
