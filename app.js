@@ -68,31 +68,45 @@ subMenuEl.style.top = "0";
 //now that topMenuLinks is declared, i can set an event listener
 //event listener will prevent default action that occurs when user clicks mouse
 //also will flatMap the menuLinks in a newly declared variable so that i can use it to check for subLinks and in turn use the subLinks to create a conditional that will make the subMenuEl top property 100% visible
-
+// console.log(menuLinks)
 let topMenuLinks = topMenuEl.querySelectorAll("a");
-const flatLinks = menuLinks.flatMap((obj, index) =>
-  obj.subLinks !== undefined ? obj : menuLinks.splice(index)
-);
+// const flatLinks = menuLinks.flatMap((obj, index) => obj.subLinks !== undefined ? obj : menuLinks.splice(index));
+// console.log(menuLinks)
+// console.log(subMenuEl)
 
 topMenuEl.addEventListener("click", (event) => {
   event.preventDefault();
-  if (event.target.localName === "a") {
-    event.target.className === ""
-      ? (event.target.className = "active") 
-      : event.target.classList.remove("active");
 
-    flatLinks.forEach((obj) => {
-      if (Object.keys(obj).length >= 3 ) {
-        event.target.text === obj.text ? subMenuEl.style.top = "100%" : subMenuEl.style.top = "0";
-    }});
+  if (event.target.localName !== "a") return;
 
+  event.target.className === "" ? (event.target.className = "active") : event.target.classList.remove("active");
+  
+  // flatLinks.forEach((obj) => {
+  //     if (event.target.text === obj.text && obj.hasOwnProperty('subLinks')) {
+  //       subMenuEl.style.top = "100%"
+  //     } else if (event.target.text === obj.text) subMenuEl.style.top = "0";
+  // });
+
+  const linkText = event.target.textContent
+  const linkObject = menuLinks.find((link) => link.text === linkText)
+  console.log(linkObject)
+  if (event.target.text === linkText && Object.keys("subLinks")) { 
+    subMenuEl.style.top = "100%"
+  } else subMenuEl.style.top = "0";
+  
     // function buildSubMenu(arr){
-    //   arr.forEach((elem)=>{
-    //     console.log(elem)
+    //   subMenuEl.innerHTML = "";
+    //   arr.forEach((obj)=>{
+    //     const subs = obj.subLinks
+    //     const newLinks = document.createElement("a");
+    //     console.log(subs)
+    //     newLinks.href = obj.href;
+    //     newLinks.textContent = obj.text;
+    //     subMenuEl.append(newLinks)
     //   })
     // }
     // buildSubMenu(flatLinks)
-  }
+  
 });
 
 //part 5: adding submenu interaction
