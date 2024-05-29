@@ -39,7 +39,6 @@ mainEl.append(newHeader);
 const topMenuEl = document.getElementById("top-menu");
 topMenuEl.className = "flex-around";
 
-// console.log(mainEl)
 //creating a function that will take in an array
 //the array will be iterated through to grab each obj within the element
 //within each element, i will create a new element with the a tag so i can create the links / buttons for the menu bar
@@ -48,11 +47,9 @@ topMenuEl.className = "flex-around";
 function addMenuButtons(arr) {
   arr.flatMap((obj) => {
     let buttons = document.createElement("a");
-    // console.log(buttons)
     buttons.href = obj.href;
     buttons.textContent = obj.text;
     topMenuEl.append(buttons);
-    // console.log(buttons)
   });
 }
 addMenuButtons(menuLinks);
@@ -60,21 +57,24 @@ addMenuButtons(menuLinks);
 //part 3: creating sub menu (dom manipulation part 2)
 
 const subMenuEl = document.getElementById("sub-menu");
-// console.log(subMenuEl.style)
 subMenuEl.style.height = "100%";
 subMenuEl.style.backgroundColor = "var(--sub-menu-bg)";
 subMenuEl.classList = "flex-around";
 subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
-// console.log(subMenuEl)
 
 //part 4: adding menu interaction (dom manipulation part 2)
 let topMenuLinks = topMenuEl.querySelectorAll("a");
-console.log(topMenuLinks);
-topMenuEl.addEventListener("click", function (event) {
-  event.preventDefault();
-  if(event.target.localName !== "a") return;
-  else console.log( event.target.innerText)
+topMenuEl.addEventListener("click", (event) => {
+event.preventDefault();
+const flatLinks = menuLinks.flatMap((obj)=> obj.subLinks !== undefined ? obj : null);
+(event.target.localName === "a" && event.target.className === "") ? event.target.className = "active" : event.target.classList.remove("active");
+
+
+console.log(flatLinks)
 });
 
-console.log(topMenuLinks);
+
+
+//part 5: adding submenu interaction
+
