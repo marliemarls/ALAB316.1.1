@@ -64,6 +64,11 @@ subMenuEl.style.position = "absolute";
 subMenuEl.style.top = "0";
 
 //part 4: adding menu interaction (dom manipulation part 2)
+//declaring a variable named topMenuLinks that selects all the a links within topMenuEl element
+//now that topMenuLinks is declared, i can set an event listener
+//event listener will prevent default action that occurs when user clicks mouse
+//also will flatMap the menuLinks in a newly declared variable so that i can use it to check for subLinks and in turn use the subLinks to create a conditional that will make the subMenuEl top property 100% visible
+
 let topMenuLinks = topMenuEl.querySelectorAll("a");
 topMenuEl.addEventListener("click", (event) => {
 event.preventDefault();
