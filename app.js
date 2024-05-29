@@ -70,13 +70,25 @@ subMenuEl.style.top = "0";
 //also will flatMap the menuLinks in a newly declared variable so that i can use it to check for subLinks and in turn use the subLinks to create a conditional that will make the subMenuEl top property 100% visible
 
 let topMenuLinks = topMenuEl.querySelectorAll("a");
+const flatLinks = menuLinks.flatMap((obj, index)=> obj.subLinks !== undefined ? obj : menuLinks.splice(index));
+console.log(flatLinks)
+
+
 topMenuEl.addEventListener("click", (event) => {
 event.preventDefault();
-const flatLinks = menuLinks.flatMap((obj)=> obj.subLinks !== undefined ? obj : null);
-(event.target.localName === "a" && event.target.className === "") ? event.target.className = "active" : event.target.classList.remove("active");
+if (event.target.localName === "a") {
+event.target.className === "" ? event.target.className = "active" : event.target.classList.remove("active");
 
+flatLinks.forEach((obj)=>{
+  // console.log(Object.keys(obj).length)
+  if(event.target.text === obj.text && Object.keys(obj).length === 3){
+    subMenuEl.style.top = "100%"
+  } else if(event.target.text === obj.text) subMenuEl.style.top = "0"
+})
 
-console.log(flatLinks)
+} 
+
+// console.log(flatLinks)
 });
 
 
