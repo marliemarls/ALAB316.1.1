@@ -117,5 +117,9 @@ function buildSubMenu(sublinks) {
 subMenuEl.addEventListener("click", (event) => {
   event.preventDefault()
   if(event.target.localName !== "a") return;
-  console.log("submenu clicked", event.target.textContent)
+  console.log("submenu clicked", event.target.textContent);
+
+  subMenuEl.style.top = "0";
+  document.querySelectorAll("#top-menu a").forEach(a=>a.classList.remove("active"));
+  mainEl.innerHTML = `<h1>${event.target.textContent.toUpperCase()}</h1>`
 })
